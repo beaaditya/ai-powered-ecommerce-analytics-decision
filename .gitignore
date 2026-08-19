@@ -1,0 +1,29 @@
+# Secret & Environment files
+.env
+.env.*
+!.env.example
+
+# Python virtual environments & build artifacts
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# Dependencies & IDE configurations
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+dunnhumb_raw_CSV/
+
+dunnhumby_raw_CSV/
+
+*raw_CSV/

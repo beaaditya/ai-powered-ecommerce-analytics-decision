@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Business Analyst | Retail AI</title>
+  <meta name="description"
+    content="AI Business Analyst - Natural language retail analytics querying connected to PostgreSQL and Gemini.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-name">RETAIL AI</h1>
+            <span class="brand-subtitle">DUNNHUMBY INTELLIGENCE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">NAVIGATION</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </span>
+              <span class="nav-text">Executive Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="customers.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </span>
+              <span class="nav-text">Customer Intelligence</span>
+            </a>
+          </li>
+          <li>
+            <a href="products.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </span>
+              <span class="nav-text">Product & Sales</span>
+            </a>
+          </li>
+          <li>
+            <a href="marketing.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </span>
+              <span class="nav-text">Marketing & Promotions</span>
+            </a>
+          </li>
+          <li>
+            <a href="ai.html" class="nav-item active nav-item-ai">
+              <span class="nav-icon">✨</span>
+              <span class="nav-text">AI Business Analyst</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- New Chat Button -->
+      <div class="sidebar-action-wrap">
+        <button id="new-chat-btn" class="btn-new-chat" title="Start a fresh conversation">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>New Chat</span>
+        </button>
+      </div>
+
+      <!-- Recent Chats Section -->
+      <div class="sidebar-section history-section">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>RECENT CHATS</span>
+        </div>
+        <div class="history-list" id="history-list">
+          <div class="history-empty">No previous chats</div>
+        </div>
+      </div>
+
+      <!-- Suggested Analytics Section -->
+      <div class="sidebar-section suggested-section">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>SUGGESTED ANALYTICS</span>
+        </div>
+        <div class="suggested-list">
+          <button class="suggested-item" data-query="How many customers are in each RFM segment?">
+            <span class="item-icon">📊</span>
+            <span class="item-text">How many customers are in each RFM segment?</span>
+          </button>
+          <button class="suggested-item" data-query="What are the top 5 departments by total sales?">
+            <span class="item-icon">🏬</span>
+            <span class="item-text">What are the top 5 departments by total sales?</span>
+          </button>
+          <button class="suggested-item" data-query="Which campaigns had the highest customer spend?">
+            <span class="item-icon">🎯</span>
+            <span class="item-text">Which campaigns had the highest customer spend?</span>
+          </button>
+          <button class="suggested-item" data-query="Which customer segments are at risk?">
+            <span class="item-icon">⚠️</span>
+            <span class="item-text">Which customer segments are at risk?</span>
+          </button>
+          <button class="suggested-item" data-query="What products generate the most revenue?">
+            <span class="item-icon">💰</span>
+            <span class="item-text">What products generate the most revenue?</span>
+          </button>
+        </div>
+      </div>
+
+
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrapper">
+            <h2 class="header-title">AI Business Analyst</h2>
+            <span class="header-subtitle">Conversational Natural Language to SQL Analytics</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <button id="btn-generate-report" class="btn-report">
+            <span>📄</span>
+            <span>Generate Report</span>
+          </button>
+          <div class="status-badge schema-badge">
+            <span class="badge-dot dot-blue"></span>
+            <span class="badge-label">Schema:</span>
+            <span class="badge-value">analytics</span>
+          </div>
+          <div class="status-badge db-badge">
+            <span class="badge-dot dot-green"></span>
+            <span class="badge-value">PostgreSQL</span>
+          </div>
+          <div class="status-badge ai-badge">
+            <span class="badge-dot dot-purple"></span>
+            <span class="badge-value">Gemini</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Chat View Container -->
+      <div class="chat-container" id="chat-container">
+        <!-- Welcome Screen (Visible when starting new chat) -->
+        <div class="welcome-screen" id="welcome-screen">
+          <div class="welcome-badge">
+            <span class="welcome-sparkle">✨</span>
+            <span>Intelligent Retail Analytics</span>
+          </div>
+          <h2 class="welcome-title">Explore Retail Insights with Natural Language</h2>
+          <p class="welcome-desc">
+            Ask analytical questions about customer segmentation, product revenues, marketing campaigns, department
+            sales, and key retail performance metrics.
+          </p>
+
+          <div class="insight-cards-grid">
+            <div class="insight-card"
+              data-query="How many customers are in each RFM segment and what is their average spend?">
+              <div class="card-icon-wrapper icon-segment">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3 class="card-title">Customer Segmentation</h3>
+              <p class="card-desc">Analyze RFM cohorts, high-value shopper distributions, and identify churn-risk
+                customer segments.</p>
+              <div class="card-action">
+                <span>Explore RFM Cohorts</span>
+                <span class="arrow">→</span>
+              </div>
+            </div>
+
+            <div class="insight-card" data-query="What are the top 5 departments by total sales revenue?">
+              <div class="card-icon-wrapper icon-dept">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <h3 class="card-title">Top Departments</h3>
+              <p class="card-desc">Examine top-performing grocery and non-food departments by revenue and order volumes.
+              </p>
+              <div class="card-action">
+                <span>View Department Sales</span>
+                <span class="arrow">→</span>
+              </div>
+            </div>
+
+            <div class="insight-card" data-query="Which campaigns had the highest customer spend and response rate?">
+              <div class="card-icon-wrapper icon-campaign">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <h3 class="card-title">Campaign Analysis</h3>
+              <p class="card-desc">Measure promotional campaign efficacy, participant spending patterns, and marketing
+                ROI.</p>
+              <div class="card-action">
+                <span>Analyze Campaigns</span>
+                <span class="arrow">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages Flow Container -->
+        <div class="messages-container" id="messages-container"></div>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="input-container">
+        <form class="chat-form" id="chat-form">
+          <div class="input-wrapper">
+            <textarea id="user-input" class="chat-input"
+              placeholder="Ask an analytical question (e.g., 'What are the top 5 departments by sales?')..." rows="1"
+              required></textarea>
+            <button type="submit" id="send-btn" class="send-btn" aria-label="Send Message">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="input-footnote">
+            <span>Powered by Dunnhumby Retail Analytics • Connected to PostgreSQL and Gemini AI</span>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="report.js"></script>
+</body>
+
+</html>

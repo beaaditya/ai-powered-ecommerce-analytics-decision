@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing & Promotions | Retail AI</title>
+  <meta name="description" content="Marketing & Promotions - Campaign performance, coupon redemptions, promotional lift, and marketing ROI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-name">RETAIL AI</h1>
+            <span class="brand-subtitle">DUNNHUMBY INTELLIGENCE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">NAVIGATION</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </span>
+              <span class="nav-text">Executive Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="customers.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <span class="nav-text">Customer Intelligence</span>
+            </a>
+          </li>
+          <li>
+            <a href="products.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </span>
+              <span class="nav-text">Product & Sales</span>
+            </a>
+          </li>
+          <li>
+            <a href="marketing.html" class="nav-item active">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+              <span class="nav-text">Marketing & Promotions</span>
+            </a>
+          </li>
+          <li>
+            <a href="ai.html" class="nav-item nav-item-ai">
+              <span class="nav-icon">✨</span>
+              <span class="nav-text">AI Business Analyst</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrapper">
+            <h2 class="header-title">Marketing & Promotions</h2>
+            <span class="header-subtitle">Campaign efficacy, coupon redemptions, promotional lift, and marketing ROI.</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <a href="ai.html" class="btn-ask-ai">
+            <span class="sparkle">✨</span>
+            <span>Ask AI</span>
+          </a>
+          <div class="status-badge schema-badge">
+            <span class="badge-dot dot-blue"></span>
+            <span class="badge-label">Schema:</span>
+            <span class="badge-value">analytics</span>
+          </div>
+          <div class="status-badge db-badge">
+            <span class="badge-dot dot-green"></span>
+            <span class="badge-value">PostgreSQL</span>
+          </div>
+          <div class="status-badge ai-badge">
+            <span class="badge-dot dot-purple"></span>
+            <span class="badge-value">Gemini</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-container">
+        <div class="dashboard-content">
+
+          <!-- 6 Marketing KPIs Row -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Total Campaigns</span>
+                <span class="kpi-icon">🎯</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-campaigns">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">All Types</span>
+                <span>TypeA, TypeB & TypeC</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Targeted Households</span>
+                <span class="kpi-icon">👥</span>
+              </div>
+              <div class="kpi-value" id="kpi-targeted-hh">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Reach</span>
+                <span>Total campaign drops</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Coupon Redemptions</span>
+                <span class="kpi-icon">🎟️</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-redemptions">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Vouchers</span>
+                <span>Redeemed coupon count</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Avg Redemption Rate</span>
+                <span class="kpi-icon">📊</span>
+              </div>
+              <div class="kpi-value" id="kpi-redemption-rate">—%</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge positive">Response</span>
+                <span>Average campaign conversion</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Top Response Campaign</span>
+                <span class="kpi-icon">🏆</span>
+              </div>
+              <div class="kpi-value" id="kpi-top-campaign">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge positive">Campaign 18</span>
+                <span>18.89% redemption rate</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Campaign Spend Lift</span>
+                <span class="kpi-icon">💵</span>
+              </div>
+              <div class="kpi-value" id="kpi-promoted-revenue">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Incremental</span>
+                <span>Associated spend shift</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marketing Intelligence Insights Section -->
+          <div class="dashboard-panel featured-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">
+                  <span>🎯 Marketing Intelligence Insights</span>
+                  <span class="kpi-badge neutral">Data Derived</span>
+                </div>
+                <div class="dashboard-panel-subtitle">Key campaign findings calculated directly from PostgreSQL campaign logs.</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="marketing-insights-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">🤖</span>
+                <span class="ph-label">Loading Marketing Insights...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Campaign Ranking & Reach vs Response Scatter -->
+          <div class="dashboard-grid">
+            <!-- 1. Campaign Response Ranking -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🎯 Top 10 Campaigns by Redemption Rate</div>
+                  <div class="dashboard-panel-subtitle">Ranked campaign conversion rates (% of targeted households)</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-campaign-ranking"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Campaign Reach vs Response Scatter -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">📍 Campaign Reach vs. Response Rate Matrix</div>
+                  <div class="dashboard-panel-subtitle">Scatter mapping Targeted Households (X) vs Redemption Rate % (Y)</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-campaign-reach-response"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Coupon Type Performance & Top Campaigns -->
+          <div class="dashboard-grid">
+            <!-- 3. Coupon Redemption by Campaign Type -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🎟️ Coupon Redemptions by Campaign Type</div>
+                  <div class="dashboard-panel-subtitle">Comparing TypeA, TypeB, and TypeC voucher volume</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-promotion-type"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Top 10 Campaigns by Redemptions -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🏆 Top 10 Campaigns by Coupon Redemptions</div>
+                  <div class="dashboard-panel-subtitle">Highest total voucher volume redeemed</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-top-coupons"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: RFM Segment Response & Channel Lift -->
+          <div class="dashboard-grid">
+            <!-- 5. Campaign Response by RFM Customer Segment -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">👥 Campaign Response by Customer Segment</div>
+                  <div class="dashboard-panel-subtitle">Coupon redemptions across RFM customer cohorts</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-segment-response"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Promotional Channel Lift -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">⚡ Incremental Spend Lift by Campaign Type</div>
+                  <div class="dashboard-panel-subtitle">Observed spend shift associated with campaign types</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-channel-effectiveness"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Campaign Performance Table -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">📋 Campaign Performance Leaderboard</div>
+                <div class="dashboard-panel-subtitle">Detailed campaign metrics ranked by redemption rate</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="campaign-table-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">📋</span>
+                <span class="ph-label">Loading Campaign Table...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strategic Marketing Recommendations Section -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">🎯 Strategic Marketing Recommendations</div>
+                <div class="dashboard-panel-subtitle">Data-driven marketing opportunities calculated from campaign metrics</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="marketing-recommendations-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">📋</span>
+                <span class="ph-label">Loading Strategic Recommendations...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Assistant Call to Action Panel -->
+          <div class="cta-panel">
+            <div class="cta-left">
+              <div class="cta-icon">✨</div>
+              <div>
+                <div class="cta-title">Evaluate Marketing Campaigns with AI</div>
+                <div class="cta-desc">Ask the AI Business Analyst about campaign participant spend changes, redemption ROI, or promotional lift metrics.</div>
+              </div>
+            </div>
+            <a href="ai.html" class="cta-btn">
+              <span>Ask Marketing Analyst</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="marketing.js"></script>
+</body>
+</html>

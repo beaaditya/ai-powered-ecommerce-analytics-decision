@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product & Sales Analytics | Retail AI</title>
+  <meta name="description" content="Product & Sales Analytics - Department performance, category growth, top products, and volume trends.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-name">RETAIL AI</h1>
+            <span class="brand-subtitle">DUNNHUMBY INTELLIGENCE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">NAVIGATION</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </span>
+              <span class="nav-text">Executive Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="customers.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <span class="nav-text">Customer Intelligence</span>
+            </a>
+          </li>
+          <li>
+            <a href="products.html" class="nav-item active">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </span>
+              <span class="nav-text">Product & Sales</span>
+            </a>
+          </li>
+          <li>
+            <a href="marketing.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+              <span class="nav-text">Marketing & Promotions</span>
+            </a>
+          </li>
+          <li>
+            <a href="ai.html" class="nav-item nav-item-ai">
+              <span class="nav-icon">✨</span>
+              <span class="nav-text">AI Business Analyst</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrapper">
+            <h2 class="header-title">Product & Sales Analytics</h2>
+            <span class="header-subtitle">Department revenue, category growth, top product performance, and volume trends.</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <a href="ai.html" class="btn-ask-ai">
+            <span class="sparkle">✨</span>
+            <span>Ask AI</span>
+          </a>
+          <div class="status-badge schema-badge">
+            <span class="badge-dot dot-blue"></span>
+            <span class="badge-label">Schema:</span>
+            <span class="badge-value">analytics</span>
+          </div>
+          <div class="status-badge db-badge">
+            <span class="badge-dot dot-green"></span>
+            <span class="badge-value">PostgreSQL</span>
+          </div>
+          <div class="status-badge ai-badge">
+            <span class="badge-dot dot-purple"></span>
+            <span class="badge-value">Gemini</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-container">
+        <div class="dashboard-content">
+
+          <!-- 6 Product KPIs Row -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Total Store Revenue</span>
+                <span class="kpi-icon">💰</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-revenue">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">102 Weeks</span>
+                <span>Cumulative retail sales</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Total Units Sold</span>
+                <span class="kpi-icon">📦</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-units">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Volume</span>
+                <span>Items & fuel units</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Total Products (SKUs)</span>
+                <span class="kpi-icon">🏷️</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-products">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Catalog</span>
+                <span>Distinct merchandise SKUs</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Avg Revenue / Product</span>
+                <span class="kpi-icon">📊</span>
+              </div>
+              <div class="kpi-value" id="kpi-avg-rev-prod">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">SKU Velocity</span>
+                <span>Average sales per item</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Average Unit Value</span>
+                <span class="kpi-icon">💵</span>
+              </div>
+              <div class="kpi-value" id="kpi-avg-unit-val">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Realized Price</span>
+                <span>Average dollar value per unit</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Top Department Revenue</span>
+                <span class="kpi-icon">🏬</span>
+              </div>
+              <div class="kpi-value" id="kpi-top-dept-rev">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge positive">Grocery</span>
+                <span>Leading department sales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product & Sales Insights Section -->
+          <div class="dashboard-panel featured-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">
+                  <span>🏬 Product & Sales Insights</span>
+                  <span class="kpi-badge neutral">Data Derived</span>
+                </div>
+                <div class="dashboard-panel-subtitle">Key performance findings calculated directly from PostgreSQL product metrics.</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="product-insights-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">🤖</span>
+                <span class="ph-label">Loading Product Insights...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Department Revenue & Units Sold -->
+          <div class="dashboard-grid">
+            <!-- 1. Revenue by Department -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🏬 Revenue by Department</div>
+                  <div class="dashboard-panel-subtitle">Ranked dollar sales across top store departments</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-department-revenue"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Units Sold by Department -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">📦 Units Sold by Department</div>
+                  <div class="dashboard-panel-subtitle">Sales unit volume breakdown by department</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-department-units"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Top Categories & Sales Trend -->
+          <div class="dashboard-grid">
+            <!-- 2. Revenue by Merchandise Category -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🛒 Top 10 Merchandise Categories</div>
+                  <div class="dashboard-panel-subtitle">Highest generating commodity categories</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-category-revenue"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Revenue Trend Over Time -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">📈 Revenue Trend Over Time</div>
+                  <div class="dashboard-panel-subtitle">Weekly store revenue velocity across 102 calendar weeks</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-revenue-trend"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Revenue vs Units Sold Scatter Plot -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">⚖️ Revenue vs. Units Sold Scatter Matrix</div>
+                <div class="dashboard-panel-subtitle">Comparing Category Unit Volume (X) vs Dollar Revenue (Y) to spot high-margin vs high-volume items</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body">
+              <div class="chart-container-box" style="height: 320px;">
+                <canvas id="chart-revenue-units-scatter"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Top Products Revenue & Units -->
+          <div class="dashboard-grid">
+            <!-- 6. Top 10 Products by Revenue -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">⭐ Top 10 Products by Revenue</div>
+                  <div class="dashboard-panel-subtitle">Highest revenue-generating individual SKUs</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-top-products-revenue"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Top 10 Products by Units Sold -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">📦 Top 10 Products by Units Sold</div>
+                  <div class="dashboard-panel-subtitle">Highest volume-moving individual SKUs</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-top-products-units"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Revenue Contribution Pareto Analysis -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">📊 Revenue Contribution & Pareto Concentration</div>
+                <div class="dashboard-panel-subtitle">Cumulative sales share of Top 10, Top 50, and Top 100 SKUs vs Total Store Revenue</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body">
+              <div class="chart-container-box" style="height: 260px;">
+                <canvas id="chart-pareto-concentration"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Product Performance Table -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">📋 Product Performance Leaderboard</div>
+                <div class="dashboard-panel-subtitle">Top 25 products ranked by dollar sales with volume and average unit price</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="product-table-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">📋</span>
+                <span class="ph-label">Loading Product Table...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales Opportunities Section -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">🚀 Sales Opportunities & Recommendations</div>
+                <div class="dashboard-panel-subtitle">Actionable strategic recommendations derived from database analytics</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="product-recommendations-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">🚀</span>
+                <span class="ph-label">Loading Sales Opportunities...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Assistant Call to Action Panel -->
+          <div class="cta-panel">
+            <div class="cta-left">
+              <div class="cta-icon">✨</div>
+              <div>
+                <div class="cta-title">Explore Specific Product SKUs with AI</div>
+                <div class="cta-desc">Ask the AI Business Analyst about SKU velocities, brand preferences, or cross-merchandising opportunities using natural language.</div>
+              </div>
+            </div>
+            <a href="ai.html" class="cta-btn">
+              <span>Ask Product Analyst</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="products.js"></script>
+</body>
+</html>

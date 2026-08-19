@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Intelligence | Retail AI</title>
+  <meta name="description" content="Customer Intelligence - RFM segmentation, customer lifecycles, spending behaviour, and churn risk.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-name">RETAIL AI</h1>
+            <span class="brand-subtitle">DUNNHUMBY INTELLIGENCE</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">NAVIGATION</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </span>
+              <span class="nav-text">Executive Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="customers.html" class="nav-item active">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <span class="nav-text">Customer Intelligence</span>
+            </a>
+          </li>
+          <li>
+            <a href="products.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </span>
+              <span class="nav-text">Product & Sales</span>
+            </a>
+          </li>
+          <li>
+            <a href="marketing.html" class="nav-item">
+              <span class="nav-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+              <span class="nav-text">Marketing & Promotions</span>
+            </a>
+          </li>
+          <li>
+            <a href="ai.html" class="nav-item nav-item-ai">
+              <span class="nav-icon">✨</span>
+              <span class="nav-text">AI Business Analyst</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrapper">
+            <h2 class="header-title">Customer Intelligence</h2>
+            <span class="header-subtitle">Customer segmentation, RFM distributions, lifecycle dynamics, and churn risk.</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <a href="ai.html" class="btn-ask-ai">
+            <span class="sparkle">✨</span>
+            <span>Ask AI</span>
+          </a>
+          <div class="status-badge schema-badge">
+            <span class="badge-dot dot-blue"></span>
+            <span class="badge-label">Schema:</span>
+            <span class="badge-value">analytics</span>
+          </div>
+          <div class="status-badge db-badge">
+            <span class="badge-dot dot-green"></span>
+            <span class="badge-value">PostgreSQL</span>
+          </div>
+          <div class="status-badge ai-badge">
+            <span class="badge-dot dot-purple"></span>
+            <span class="badge-value">Gemini</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="dashboard-container">
+        <div class="dashboard-content">
+
+          <!-- 6 Customer KPI Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Total Households</span>
+                <span class="kpi-icon">👥</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-customers">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Tracked Base</span>
+                <span>Shopper households</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Avg Customer Spend</span>
+                <span class="kpi-icon">💵</span>
+              </div>
+              <div class="kpi-value" id="kpi-avg-spend">$—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Lifetime</span>
+                <span>Cumulative spend/household</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Avg Transactions / HH</span>
+                <span class="kpi-icon">🛍️</span>
+              </div>
+              <div class="kpi-value" id="kpi-avg-txns">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge neutral">Frequency</span>
+                <span>Store trips per household</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>Repeat Customer Rate</span>
+                <span class="kpi-icon">🔄</span>
+              </div>
+              <div class="kpi-value" id="kpi-retention-rate">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge positive">Retention</span>
+                <span>High frequency shoppers</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>At-Risk Customers</span>
+                <span class="kpi-icon">⚠️</span>
+              </div>
+              <div class="kpi-value" id="kpi-at-risk">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge negative">Churn Alert</span>
+                <span>High-value & regular at risk</span>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span>High-Value Customers</span>
+                <span class="kpi-icon">👑</span>
+              </div>
+              <div class="kpi-value" id="kpi-high-value">—</div>
+              <div class="kpi-footer">
+                <span class="kpi-badge positive">Top Tier</span>
+                <span>Champions & top spenders</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Intelligence Insights Section -->
+          <div class="dashboard-panel featured-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">
+                  <span>📊 Customer Intelligence Insights</span>
+                  <span class="kpi-badge neutral">Data Derived</span>
+                </div>
+                <div class="dashboard-panel-subtitle">Key analytical observations generated directly from PostgreSQL customer RFM scores.</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="customer-insights-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">🤖</span>
+                <span class="ph-label">Loading Customer Insights...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: RFM Distribution & Segment Spend Value -->
+          <div class="dashboard-grid">
+            <!-- 1. RFM Customer Segment Distribution -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🎯 RFM Customer Segment Distribution</div>
+                  <div class="dashboard-panel-subtitle">Share of Champions, Loyal, Regular, Recent, and At-Risk cohorts</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box donut-box">
+                  <canvas id="chart-segment-distribution"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Customer Segment Value -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">💵 Customer Segment Spend Contribution</div>
+                  <div class="dashboard-panel-subtitle">Cumulative retail revenue generated per customer segment</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-segment-value"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Spend Distribution & Activity Frequency -->
+          <div class="dashboard-grid">
+            <!-- 3. Customer Spend Distribution -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">📊 Customer Monetary Spend Distribution</div>
+                  <div class="dashboard-panel-subtitle">Household counts across cumulative lifetime spend brackets</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-spend-distribution"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Customer Activity / Frequency -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🛒 Purchase Trip Frequency Distribution</div>
+                  <div class="dashboard-panel-subtitle">Shopping visit counts across household frequency cohorts</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-frequency-distribution"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Customer Recency vs Monetary Value Scatter Plot -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">📍 Recency vs. Monetary Spend Matrix</div>
+                <div class="dashboard-panel-subtitle">Scatter mapping customer last purchase recency (X) vs cumulative spend (Y)</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body">
+              <div class="chart-container-box" style="height: 320px;">
+                <canvas id="chart-recency-scatter"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-Column Grid: Risk Matrix & Momentum Trend -->
+          <div class="dashboard-grid">
+            <!-- 6. Customer Segment Risk Matrix -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">⚠️ Customer Segment Risk & Revenue Exposure</div>
+                  <div class="dashboard-panel-subtitle">Comparing spend at stake in At-Risk vs Active cohorts</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box">
+                  <canvas id="chart-risk-matrix"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Customer Spending Momentum Trend -->
+            <div class="dashboard-panel">
+              <div class="dashboard-panel-header">
+                <div>
+                  <div class="dashboard-panel-title">🔄 Customer Spending Trajectory</div>
+                  <div class="dashboard-panel-subtitle">Increasing vs. decreasing household spending momentum</div>
+                </div>
+              </div>
+              <div class="dashboard-panel-body">
+                <div class="chart-container-box donut-box">
+                  <canvas id="chart-customer-momentum"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommended Customer Actions Section -->
+          <div class="dashboard-panel">
+            <div class="dashboard-panel-header">
+              <div>
+                <div class="dashboard-panel-title">💡 Recommended Customer Actions</div>
+                <div class="dashboard-panel-subtitle">Data-driven strategic recommendations tailored to segment metrics</div>
+              </div>
+            </div>
+            <div class="dashboard-panel-body" id="customer-recommendations-container">
+              <div class="placeholder-box">
+                <span class="ph-icon">📋</span>
+                <span class="ph-label">Loading Strategic Recommendations...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Assistant Call to Action Panel -->
+          <div class="cta-panel">
+            <div class="cta-left">
+              <div class="cta-icon">✨</div>
+              <div>
+                <div class="cta-title">Ask Specific Questions About Customer Cohorts</div>
+                <div class="cta-desc">Inquire about individual household spending patterns, product recommendations, or segment migration using natural language.</div>
+              </div>
+            </div>
+            <a href="ai.html" class="cta-btn">
+              <span>Ask Customer Analyst</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="customers.js"></script>
+</body>
+</html>
