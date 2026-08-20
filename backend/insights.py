@@ -289,8 +289,7 @@ def detect_promotion_insights() -> List[Dict[str, Any]]:
                 SUM(revenue) as promo_revenue,
                 SUM(units_sold) as promo_units,
                 ROUND(SUM(revenue) / NULLIF(SUM(units_sold), 0), 2) as avg_unit_price
-            FROM analytics.promotion_sales
-            WHERE has_promotion = 1;
+            FROM analytics.production_promotion_summary;
         """)
         row = cursor.fetchone()
         if row and row[0] is not None:
