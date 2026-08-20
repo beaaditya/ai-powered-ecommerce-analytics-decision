@@ -3,12 +3,11 @@
  * Triggers POST http://127.0.0.1:8000/api/reports/business and renders executive management report modal.
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
-  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
-  window.location.port !== '8000' && window.location.port !== ''
+const API_BASE_URL =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1'
     ? 'http://127.0.0.1:8000'
-    : ''
-);
+    : '';
 const REPORT_API_URL = `${API_BASE_URL}/api/reports/business`;
 
 document.addEventListener('DOMContentLoaded', () => {

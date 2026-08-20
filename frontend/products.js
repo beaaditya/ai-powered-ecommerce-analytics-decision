@@ -4,12 +4,11 @@
  * - GET http://127.0.0.1:8000/api/dashboard/products
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
-  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
-  window.location.port !== '8000' && window.location.port !== ''
+const API_BASE_URL =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1'
     ? 'http://127.0.0.1:8000'
-    : ''
-);
+    : '';
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarToggle();
