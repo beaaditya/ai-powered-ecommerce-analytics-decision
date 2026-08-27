@@ -13,17 +13,45 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
+build/
+dist/
+*.egg-info/
 
 # Dependencies & IDE configurations
 node_modules/
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# Operating System files
 .DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Logs, temporary & backup files
 *.log
+*.tmp
+*.bak
+*.old
 
+# Local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Large Raw Datasets (intentionally excluded from Git)
 dunnhumb_raw_CSV/
-
 dunnhumby_raw_CSV/
-
 *raw_CSV/
+dunnhumby_The-Complete-Journey CSV/
+*.csv
+
+
+# Local development screenshot captures
+webiste dashboard screenshot/
