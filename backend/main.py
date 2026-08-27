@@ -28,17 +28,38 @@ except ImportError:
     from agent import run_business_analyst_agent
     from pipeline import run_automated_analysis_pipeline, get_latest_automated_analysis
 
+import os
+
 app = FastAPI(
     title="AI Retail Intelligence API",
     description="Backend API for Retail Intelligence System",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json"
 )
 
-# CORS Configuration for local frontend origins
+# CORS Configuration supporting local development and production FRONTEND_URL
 origins = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
 ]
+
+# Allow dynamic production frontend URL configuration
+frontend_url_env = os.getenv("FRONTEND_URL", "").strip()
+if frontend_url_env:
+    for url in frontend_url_env.split(","):
+        url = url.strip()
+        if url and url not in origins:
+            origins.append(url)
+
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "").strip()
+if allowed_origins_env:
+    for url in allowed_origins_env.split(","):
+        url = url.strip()
+        if url and url not in origins:
+            origins.append(url)
 
 app.add_middleware(
     CORSMiddleware,
@@ -57,7 +78,7 @@ class ChatRequest(BaseModel):
     history: Optional[List[Dict[str, Any]]] = None
 
 
-@app.get("/health")
+@app.get("/api/health")
 def health_check():
     """
     Health check endpoint to test API and PostgreSQL database connectivity.
@@ -92,7 +113,7 @@ def health_check():
         )
 
 
-@app.get("/ai/health")
+@app.get("/api/ai/health")
 def ai_health_check():
     """
     Health check endpoint to test Gemini configuration availability.
@@ -114,7 +135,7 @@ def ai_health_check():
         )
 
 
-@app.post("/chat")
+@app.post("/api/chat")
 def chat_endpoint(payload: ChatRequest):
     """
     Natural-language-to-SQL chat endpoint for Retail Intelligence.

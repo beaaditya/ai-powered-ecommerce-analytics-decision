@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ? 'http://127.0.0.1:8000'
       : ''
   );
-  const BACKEND_URL = `${API_BASE_URL}/chat`;
+  const BACKEND_URL = `${API_BASE_URL}/api/chat`;
   const STORAGE_KEY_CHATS = 'retail_ai_conversations_v1';
   const STORAGE_KEY_ACTIVE = 'retail_ai_active_chat_id_v1';
 
