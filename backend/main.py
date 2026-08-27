@@ -241,6 +241,18 @@ def get_latest_analysis_endpoint():
     return get_latest_automated_analysis()
 
 
+# =========================================================================
+# Static Frontend Serving (Guarantees root / and assets work on Vercel & local)
+# =========================================================================
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+if FRONTEND_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+
+
+
 
 
 
