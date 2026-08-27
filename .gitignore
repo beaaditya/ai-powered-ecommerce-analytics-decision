@@ -48,6 +48,7 @@ desktop.ini
 *.backup
 *.sql.gz
 production_dump.sql
+database/production_tables.sql
 
 
 # Large Raw Datasets (intentionally excluded from Git)
