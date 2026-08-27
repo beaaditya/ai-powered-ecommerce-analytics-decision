@@ -287,6 +287,7 @@ ai-powered-ecommerce-analytics-decision/
 │   └── sql_agent.py                           # NL2SQL translation, execution & validation engine
 │
 ├── docs/
+│   ├── PRODUCTION_DATABASE_PLAN.md            # Free-tier Vercel + Supabase production sizing plan
 │   ├── AI workflow diagram.png                # AI workflow architecture diagram
 │   ├── ER diagram.png                         # PostgreSQL Entity-Relationship diagram
 │   ├── software architecture diagram.png      # End-to-end software architecture diagram
@@ -322,6 +323,8 @@ ai-powered-ecommerce-analytics-decision/
 │   └── style.css                              # Enterprise glassmorphism stylesheet & CSS design tokens
 │
 ├── scripts/
+│   ├── create_production_database.sql         # Cloud production database DDL (18 tables & 2 views)
+│   ├── export_production_db.py                # Automated production database extraction utility
 │   └── import.py                              # CSV-to-PostgreSQL automated ETL ingestion script
 │
 └── sql/
@@ -494,6 +497,7 @@ Detailed technical specifications and business case documentation are available 
 | [`TECHNICAL_DOCUMENTATION.md`](TECHNICAL_DOCUMENTATION.md) | Complete architectural blueprint, component design, and integration specifications |
 | [`TEST_CHECKLIST.md`](TEST_CHECKLIST.md) | QA test scenarios, edge case handling, and security test matrices |
 | [`TEST_REPORT.md`](TEST_REPORT.md) | Formal validation test execution report and security audit verification |
+| [`docs/PRODUCTION_DATABASE_PLAN.md`](docs/PRODUCTION_DATABASE_PLAN.md) | Free-tier Vercel + Supabase production database architecture & sizing strategy |
 | [`docs/ER diagram.png`](docs/ER%20diagram.png) | High-resolution PostgreSQL Entity-Relationship diagram |
 | [`docs/AI workflow diagram.png`](docs/AI%20workflow%20diagram.png) | High-resolution diagram of the NL2SQL AI analytical workflow |
 | [`docs/software architecture diagram.png`](docs/software%20architecture%20diagram.png) | End-to-end software architecture blueprint |

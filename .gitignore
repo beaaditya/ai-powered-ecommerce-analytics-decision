@@ -40,10 +40,15 @@ desktop.ini
 *.bak
 *.old
 
-# Local database files
+# Local database files & dumps
 *.sqlite
 *.sqlite3
 *.db
+*.dump
+*.backup
+*.sql.gz
+production_dump.sql
+
 
 # Large Raw Datasets (intentionally excluded from Git)
 dunnhumb_raw_CSV/
