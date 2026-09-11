@@ -1,15 +1,17 @@
 /**
  * Customer Intelligence Dashboard Controller
  * Connects frontend/customers.html to real PostgreSQL analytics:
- * - GET http://127.0.0.1:8000/api/dashboard/customers
+ * - GET ${API_BASE_URL}/api/dashboard/customers
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
+window.API_BASE_URL = window.API_BASE_URL || (
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
   window.location.port !== '8000' && window.location.port !== ''
     ? 'http://127.0.0.1:8000'
-    : ''
+    : 'https://ai-powered-ecommerce-analytics-decision.onrender.com'
 );
+var API_BASE_URL = window.API_BASE_URL;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarToggle();
@@ -52,7 +54,7 @@ async function fetchCustomerIntelligence() {
 
   } catch (error) {
     console.error('Failed to load customer intelligence data:', error);
-    renderDashboardError('Failed to load customer intelligence metrics. Ensure FastAPI backend is running on 127.0.0.1:8000.');
+    renderDashboardError('Failed to load customer intelligence metrics. Ensure FastAPI backend is reachable.');
   }
 }
 

@@ -1,15 +1,17 @@
 /**
  * Product & Sales Intelligence Dashboard Controller
  * Connects frontend/products.html to real PostgreSQL analytics:
- * - GET http://127.0.0.1:8000/api/dashboard/products
+ * - GET ${API_BASE_URL}/api/dashboard/products
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
+window.API_BASE_URL = window.API_BASE_URL || (
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
   window.location.port !== '8000' && window.location.port !== ''
     ? 'http://127.0.0.1:8000'
-    : ''
+    : 'https://ai-powered-ecommerce-analytics-decision.onrender.com'
 );
+var API_BASE_URL = window.API_BASE_URL;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarToggle();
@@ -56,7 +58,7 @@ async function fetchProductSalesData() {
 
   } catch (error) {
     console.error('Failed to load product & sales data:', error);
-    renderDashboardError('Failed to load product metrics. Ensure FastAPI backend is running on 127.0.0.1:8000.');
+    renderDashboardError('Failed to load product metrics. Ensure FastAPI backend is reachable.');
   }
 }
 

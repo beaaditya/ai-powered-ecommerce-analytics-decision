@@ -1,16 +1,18 @@
 /**
  * Executive Overview Dashboard Controller
  * Connects frontend/index.html to real PostgreSQL analytics endpoints:
- * - GET http://127.0.0.1:8000/api/dashboard/overview
- * - GET http://127.0.0.1:8000/api/insights
+ * - GET ${API_BASE_URL}/api/dashboard/overview
+ * - GET ${API_BASE_URL}/api/insights
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
+window.API_BASE_URL = window.API_BASE_URL || (
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
   window.location.port !== '8000' && window.location.port !== ''
     ? 'http://127.0.0.1:8000'
-    : ''
+    : 'https://ai-powered-ecommerce-analytics-decision.onrender.com'
 );
+var API_BASE_URL = window.API_BASE_URL;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarToggle();
@@ -55,7 +57,7 @@ async function fetchDashboardOverview() {
 
   } catch (error) {
     console.error('Failed to load dashboard overview data:', error);
-    renderDashboardError('Failed to load live overview metrics. Ensure FastAPI backend is running on 127.0.0.1:8000.');
+    renderDashboardError('Failed to load live overview metrics. Ensure FastAPI backend is reachable.');
   }
 }
 
@@ -580,7 +582,7 @@ async function triggerAutomatedAnalysis() {
         <div class="placeholder-box error-box">
           <span class="ph-icon">⚠️</span>
           <span class="ph-label">Pipeline Execution Error</span>
-          <span class="ph-desc">Unable to run automated analysis pipeline. Ensure FastAPI backend is running on 127.0.0.1:8000.</span>
+          <span class="ph-desc">Unable to run automated analysis pipeline. Ensure FastAPI backend is reachable.</span>
         </div>
       `;
     }

@@ -1,15 +1,17 @@
 /**
  * AI Business Report Modal & Controller
- * Triggers POST http://127.0.0.1:8000/api/reports/business and renders executive management report modal.
+ * Triggers POST ${API_BASE_URL}/api/reports/business and renders executive management report modal.
  */
 
-const API_BASE_URL = window.API_BASE_URL || (
+window.API_BASE_URL = window.API_BASE_URL || (
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
   window.location.port !== '8000' && window.location.port !== ''
     ? 'http://127.0.0.1:8000'
-    : ''
+    : 'https://ai-powered-ecommerce-analytics-decision.onrender.com'
 );
-const REPORT_API_URL = `${API_BASE_URL}/api/reports/business`;
+var API_BASE_URL = window.API_BASE_URL;
+var REPORT_API_URL = `${API_BASE_URL}/api/reports/business`;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   initReportModal();

@@ -1,0 +1,13 @@
+# Vercel Deployment Exclusions
+# Exclude serverless API and backend directories from static Vercel deployment
+api/
+backend/
+scripts/
+sql/
+*.py
+requirements.txt
+render.yaml
+dunnhumby_raw_CSV*
+check_analytics_schema.py
+*.pdf
+webiste dashboard screenshot/

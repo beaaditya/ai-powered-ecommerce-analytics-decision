@@ -3,12 +3,13 @@
  * Pure JavaScript client with local conversation history management.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  const API_BASE_URL = window.API_BASE_URL || (
+  window.API_BASE_URL = window.API_BASE_URL || (
     (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') &&
     window.location.port !== '8000' && window.location.port !== ''
       ? 'http://127.0.0.1:8000'
-      : ''
+      : 'https://ai-powered-ecommerce-analytics-decision.onrender.com'
   );
+  const API_BASE_URL = window.API_BASE_URL;
   const BACKEND_URL = `${API_BASE_URL}/api/chat`;
   const STORAGE_KEY_CHATS = 'retail_ai_conversations_v1';
   const STORAGE_KEY_ACTIVE = 'retail_ai_active_chat_id_v1';
