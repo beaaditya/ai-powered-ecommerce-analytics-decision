@@ -45,7 +45,7 @@ The 'analytics' schema contains the following pre-calculated tables:
     - Columns: household_key (bigint), first_half_revenue (numeric), second_half_revenue (numeric), first_half_quantity (numeric), second_half_quantity (numeric), revenue_change (numeric), revenue_change_pct (numeric), spending_trend (character varying)
 
 11. analytics.customer_recommendations
-    - Columns: household_key (bigint), category_preference_rank (bigint), department (text), commodity_desc (text), product_id (bigint), product_revenue (numeric), product_customers (bigint), units_sold (bigint), recommendation_rank (bigint)
+    - Columns: household_key (bigint), product_id (bigint), department (text), commodity_desc (text), purchase_count (bigint), units_purchased (bigint), revenue (numeric), recommendation_rank (bigint)
 
 12. analytics.customer_discount
     - Columns: household_key (bigint), revenue (numeric), total_discount (numeric), total_purchase_lines (bigint), discounted_purchase_lines (bigint), discount_purchase_rate (numeric), discount_sensitivity (character varying)
@@ -57,7 +57,7 @@ The 'analytics' schema contains the following pre-calculated tables:
     - Columns: household_key (bigint), basket_id (bigint), day (integer), week_no (integer), basket_revenue (numeric), basket_quantity (bigint), basket_discount (numeric), unique_products (bigint)
 
 15. analytics.promotion_sales
-    - Columns: product_id (bigint), department (text), commodity_desc (text), has_display (integer), has_mailer (integer), has_promotion (integer), units_sold (bigint), revenue (numeric)
+    - Columns: product_id (bigint), department (text), commodity_desc (text), has_display (integer), has_mailer (integer), has_promotion (integer), units_sold (bigint), revenue (numeric), baskets (bigint), households (bigint)
 """
 
 

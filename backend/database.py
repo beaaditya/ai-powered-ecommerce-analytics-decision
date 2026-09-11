@@ -10,21 +10,38 @@ def get_db_connection():
     """
     Establish and return a connection to the PostgreSQL database
     using credentials from environment variables.
+    Supports either DATABASE_URL (for Supabase / Render cloud deployments)
+    or individual DB_* environment variables (for local development).
     """
+    database_url = os.getenv("DATABASE_URL")
+    connect_timeout = int(os.getenv("DB_CONNECT_TIMEOUT", "10"))
+    sslmode = os.getenv("DB_SSLMODE")
+
+    if database_url and database_url.strip():
+        conn_kwargs = {"connect_timeout": connect_timeout}
+        if sslmode:
+            conn_kwargs["sslmode"] = sslmode
+        return psycopg2.connect(database_url.strip(), **conn_kwargs)
+
     host = os.getenv("DB_HOST", "localhost")
     port = os.getenv("DB_PORT", "5432")
     dbname = os.getenv("DB_NAME", "postgres")
     user = os.getenv("DB_USER", "postgres")
     password = os.getenv("DB_PASSWORD", "")
 
-    return psycopg2.connect(
-        host=host,
-        port=port,
-        dbname=dbname,
-        user=user,
-        password=password,
-        connect_timeout=5
-    )
+    conn_kwargs = {
+        "host": host,
+        "port": port,
+        "dbname": dbname,
+        "user": user,
+        "password": password,
+        "connect_timeout": connect_timeout,
+    }
+    if sslmode:
+        conn_kwargs["sslmode"] = sslmode
+
+    return psycopg2.connect(**conn_kwargs)
+
 
 
 def check_db_health():
