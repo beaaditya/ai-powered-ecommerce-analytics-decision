@@ -16,10 +16,66 @@ var API_BASE_URL = window.API_BASE_URL;
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarToggle();
-  fetchDashboardOverview();
-  fetchAutomatedInsights();
+  loadExecutiveOverview();
   initAutomatedAnalysis();
 });
+
+let executiveLoadController = null;
+
+/**
+ * The Executive Overview is ready only when its metrics/charts and automated
+ * insights have both rendered. The loading screen is intentionally tied to
+ * these live requests instead of a timer.
+ */
+async function loadExecutiveOverview() {
+  if (executiveLoadController) executiveLoadController.abort();
+
+  executiveLoadController = new AbortController();
+  const { signal } = executiveLoadController;
+  setPreloaderState('loading', 'Connecting to live retail data…');
+
+  try {
+    const overviewRequest = fetchDashboardOverview(signal).then(() => {
+      setPreloaderState('loading', 'Loading executive insights…');
+    });
+    const insightsRequest = fetchAutomatedInsights(signal);
+
+    await Promise.all([overviewRequest, insightsRequest]);
+    if (!signal.aborted) setPreloaderState('ready');
+  } catch (error) {
+    if (error.name === 'AbortError') return;
+    console.error('Failed to initialize Executive Overview:', error);
+    setPreloaderState('error');
+  }
+}
+
+function setPreloaderState(state, statusText) {
+  const preloader = document.getElementById('dashboard-preloader');
+  const status = document.getElementById('preloader-status');
+  const error = document.getElementById('preloader-error');
+  const retry = document.getElementById('preloader-retry');
+  if (!preloader || !status || !error) return;
+
+  if (state === 'loading') {
+    preloader.classList.remove('is-ready', 'has-error');
+    preloader.setAttribute('aria-label', 'Initializing Retail Intelligence');
+    status.textContent = statusText;
+    error.hidden = true;
+  } else if (state === 'ready') {
+    preloader.classList.add('is-ready');
+    preloader.setAttribute('aria-hidden', 'true');
+  } else if (state === 'error') {
+    preloader.classList.remove('is-ready');
+    preloader.classList.add('has-error');
+    preloader.setAttribute('aria-label', 'Unable to load Retail Intelligence');
+    status.textContent = 'The live analytics service is taking longer than expected.';
+    error.hidden = false;
+    if (retry && !retry.dataset.bound) {
+      retry.dataset.bound = 'true';
+      retry.addEventListener('click', loadExecutiveOverview);
+    }
+  }
+}
 
 /**
  * Mobile Sidebar Toggle Handler
@@ -37,9 +93,9 @@ function initSidebarToggle() {
 /**
  * Fetch and Render Overview Metrics & Charts
  */
-async function fetchDashboardOverview() {
+async function fetchDashboardOverview(signal) {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/dashboard/overview`);
+    const response = await fetch(`${API_BASE_URL}/api/dashboard/overview`, { signal });
     if (!response.ok) {
       throw new Error(`Overview API HTTP error ${response.status}`);
     }
@@ -57,7 +113,7 @@ async function fetchDashboardOverview() {
 
   } catch (error) {
     console.error('Failed to load dashboard overview data:', error);
-    renderDashboardError('Failed to load live overview metrics. Ensure FastAPI backend is reachable.');
+    throw error;
   }
 }
 
@@ -93,12 +149,12 @@ function renderKPIs(kpis) {
 /**
  * Fetch and Render Automated Business Insights
  */
-async function fetchAutomatedInsights() {
+async function fetchAutomatedInsights(signal) {
   const container = document.getElementById('automated-insights-container');
   if (!container) return;
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/insights`);
+    const response = await fetch(`${API_BASE_URL}/api/insights`, { signal });
     if (!response.ok) {
       throw new Error(`Insights API HTTP error ${response.status}`);
     }
@@ -124,13 +180,7 @@ async function fetchAutomatedInsights() {
 
   } catch (error) {
     console.error('Failed to load automated insights:', error);
-    container.innerHTML = `
-      <div class="placeholder-box error-box">
-        <span class="ph-icon">⚠️</span>
-        <span class="ph-label">Insights Connection Error</span>
-        <span class="ph-desc">Unable to retrieve live insights from backend /api/insights.</span>
-      </div>
-    `;
+    throw error;
   }
 }
 

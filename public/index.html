@@ -12,6 +12,27 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
+  <div class="dashboard-preloader" id="dashboard-preloader" role="status" aria-live="polite" aria-label="Initializing Retail Intelligence">
+    <div class="preloader-orbit preloader-orbit-outer" aria-hidden="true"></div>
+    <div class="preloader-orbit preloader-orbit-inner" aria-hidden="true"></div>
+    <section class="preloader-card" aria-labelledby="preloader-title">
+      <div class="preloader-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24 4 7 13l17 9 17-9L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="m7 23 17 9 17-9M7 33l17 9 17-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="preloader-eyebrow">RETAIL AI</p>
+      <h1 class="preloader-title" id="preloader-title">DUNNHUMBY INTELLIGENCE</h1>
+      <p class="preloader-message">Preparing your executive analytics workspace</p>
+      <p class="preloader-status" id="preloader-status">Connecting to live retail data…</p>
+      <div class="preloader-progress" aria-hidden="true"><span></span></div>
+      <div class="preloader-error" id="preloader-error" hidden>
+        <p>We couldn’t load the live executive dashboard.</p>
+        <button class="preloader-retry" id="preloader-retry" type="button">Retry connection</button>
+      </div>
+    </section>
+  </div>
   <div class="app-layout">
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
